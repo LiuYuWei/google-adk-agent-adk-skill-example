@@ -2,3 +2,4 @@
 __pycache__/
 .adk/
 session.db
+litellm_skill_agent/ace_two_model_config.py
