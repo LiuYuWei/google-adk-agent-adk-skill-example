@@ -4,7 +4,7 @@
 
 ## 🚀 專案結構
 
-- `ace_two_skill_agent/`: 使用 ACE-2 模型並搭載 `travel-planner` 技能的主 Agent。
+- `litellm_skill_agent/`: 使用 LiteLLM 整合模型並搭載 `travel-planner` 技能的主 Agent。
 - `skill_agent/`: 使用 Gemini 模型並搭載 `travel-planner` 技能的 Agent。
 - `skill_original_agent/`: 基本的 ADK Agent (未掛載 Skill)。
 
@@ -17,11 +17,11 @@
 GOOGLE_API_KEY=YOUR_GEMINI_KEY
 ```
 
-### ACE-2 (LiteLLM)
+### LiteLLM
 ```env
-LITELLM_ACE_TWO_MODEL_API_BASE=https://litellm-dev.dgx-coolify.apmic.ai/v1
-LITELLM_ACE_TWO_MODEL_API_KEY=YOUR_API_KEY
-LITELLM_ACE_TWO_MODEL_MODEL_NAME=openai/ACE-2-2602
+LITELLM_MODEL_API_BASE=https://your-api-base-url.com/v1
+LITELLM_MODEL_API_KEY=YOUR_API_KEY
+LITELLM_MODEL_MODEL_NAME=openai/your-model-name
 ```
 
 ## 📖 快速上手
@@ -32,7 +32,7 @@ make install
 ```
 
 ### 2. 啟動 Web UI
-使用預設的 `ace_two_skill_agent`:
+使用預設的 `litellm_skill_agent`:
 ```bash
 make web
 ```
@@ -58,8 +58,5 @@ make create-agent
 
 ## ⚠️ 常見問題 (FAQ)
 
-- **ImportError**: 若遇到 `ModuleNotFoundError`，請確保在 `agent.py` 中使用正確的匯入方式：
-  ```python
-  from .ace_two_model_config import litellm_ace_two_model
-  ```
+- **環境變數**: 確保 `litellm_skill_agent` 中已配置所有 `LITELLM_MODEL_...` 相關變數，否則 Agent 會因為驗證失敗而無法啟動。
 - **ValidationError**: Skill 的 `name` 在 `SKILL.md` 中必須使用 **kebab-case** (例如 `travel-planner`)。
